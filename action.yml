@@ -22,8 +22,8 @@ outputs:
   workspace_name:
     description: 'Name of the newly created workspace'
 runs:
-  using: 'composite'
-  steps:
+  using: 'node16'
+  main: index.js
     - name: Install Node
       uses: actions/setup-node@v1
       with:
@@ -33,5 +33,4 @@ runs:
       shell: bash
       run: |
         npm install localtunnel -g
-        yarn add random-word-slugs @actions/core @actions/exec
         yarn run setup
