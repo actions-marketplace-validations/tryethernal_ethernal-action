@@ -1,0 +1,35 @@
+name: 'Ethernal Action'
+description: 'Automatically generate a block explorer for your CI'
+inputs:
+  api_token:
+    description: 'Your Ethernal API token, find it in "Settings" > "Account"'
+    required: true
+  node_port:
+    description: 'Port on which your chain is running (default 8545)'
+    required: false
+    default: 8545
+  api_root:
+    description: 'Ethernal API Root. Use if you are self hosting'
+    required: false
+    default: 'https://app-pql6sv7epq-uc.a.run.app'
+  explorer_subdomain:
+    description: 'Default subdomain for generated explorers. Use if you are self hosting.'
+    required: false
+    default: 'tryethernal.com'
+outputs:
+  explorer_url:
+    description: 'URL of your explorer'
+  workspace_name:
+    description: 'Name of the newly created workspace'
+runs:
+  using: 'composite'
+  steps:
+    - name: Install Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: 16.2.0
+
+    - run: |
+      npm install localtunnel -g
+      yarn add random-word-slugs @actions/core @actions/exec
+      node index.js
