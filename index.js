@@ -52,7 +52,7 @@ async function createExplorer(name, rpcServer) {
 
 async function main() {
     const appBaseName = `${generateSlug(2)}-${Math.floor(Math.random() * 10000)}`;
-    await exec.exec('sh', [], { input: `lt --port ${NODE_PORT} --subdomain ${appBaseName} &` });
+    await exec.exec('sh', [], { input: `npx localtunnel --port ${NODE_PORT} --subdomain ${appBaseName} &` });
     await setTimeout(async () => {
         const tunnelUrl = `https://${appBaseName}.loca.lt`;
         core.notice(`Tunnel running on ${tunnelUrl}`);
