@@ -34,4 +34,4 @@ runs:
       run: |
         npm install localtunnel -g
         yarn add random-word-slugs @actions/core @actions/exec
-        node index.js
+        yarn run setup
