@@ -23,14 +23,5 @@ outputs:
     description: 'Name of the newly created workspace'
 runs:
   using: 'node16'
+  pre: npm install localtunnel -g
   main: index.js
-    - name: Install Node
-      uses: actions/setup-node@v1
-      with:
-        node-version: 16.2.0
-
-    - name: Install dependencies
-      shell: bash
-      run: |
-        npm install localtunnel -g
-        yarn run setup
