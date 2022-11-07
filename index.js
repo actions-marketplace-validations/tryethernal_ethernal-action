@@ -1,8 +1,10 @@
 const { generateSlug } = require('random-word-slugs');
-const localtunnel = require('localtunnel');
 const axios = require('axios');
 const core = require('@actions/core');
 const exec = require('@actions/exec');
+const child_process = require('child_process')
+
+child_process.exec('npm install localtunnel -g', core.notice);
 
 const API_TOKEN = core.getInput('api_token');
 const API_ROOT = core.getInput('api_root');
