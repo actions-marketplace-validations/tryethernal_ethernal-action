@@ -23,5 +23,5 @@ outputs:
     description: 'Name of the newly created workspace'
 runs:
   using: 'node16'
-  pre: npm install localtunnel -g
+  pre: pre.sh
   main: index.js
