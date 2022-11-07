@@ -29,7 +29,8 @@ runs:
       with:
         node-version: 16.2.0
 
-    - run: |
-      npm install localtunnel -g
-      yarn add random-word-slugs @actions/core @actions/exec
-      node index.js
+    - name: Install dependencies
+      run: |
+        npm install localtunnel -g
+        yarn add random-word-slugs @actions/core @actions/exec
+        node index.js
