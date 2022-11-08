@@ -49,7 +49,7 @@ async function createExplorer(name, rpcServer) {
         chainId: parseInt(workspace.networkId)
     }
     const explorer = (await axios.post(`${API_ROOT}/api/explorers`, { data: payload }, ETHERNAL_HEADERS)).data;
-    return payload.domain;
+    return `https://${payload.domain}`;
 }
 
 async function main() {
@@ -57,9 +57,9 @@ async function main() {
     await exec.exec('sh', [], { input: `npx localtunnel --port ${NODE_PORT} --subdomain ${appBaseName} &` });
     await setTimeout(async () => {
         const tunnelUrl = `https://${appBaseName}.loca.lt`;
-        core.notice(`Tunnel running on ${tunnelUrl}`);
         const explorerUrl = await createExplorer(appBaseName, tunnelUrl);
         core.setOutput('explorer_url', explorerUrl);
+        core.notice(`Explorer URL: ${explorerUrl}`);
         core.setOutput('workspace', appBaseName);
         process.exit();
     }, 5000);
