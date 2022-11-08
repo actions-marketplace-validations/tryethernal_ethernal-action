@@ -29,7 +29,7 @@ async function createWorkspace(name, rpcServer) {
             networkId: 31337,
             rpcServer: rpcServer,
             public: true,
-            tracing: core.getInput('tracing') || 'hardhat'
+            tracing: 'disabled'
         }
     }
     const workspace = (await axios.post(`${API_ROOT}/api/workspaces`, { data: payload }, ETHERNAL_HEADERS)).data;
