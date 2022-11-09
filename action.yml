@@ -1,4 +1,4 @@
-name: 'Ethernal Action'
+name: 'Ethernal Explorer'
 description: 'Automatically generate a block explorer for your CI'
 inputs:
   api_token:
